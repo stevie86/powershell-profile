@@ -9,7 +9,7 @@ A stylish and functional PowerShell profile that looks and feels almost as good 
 Execute the following command in an elevated PowerShell window to install the PowerShell profile:
 
 ```
-irm "https://github.com/stevie86/powershell-profile/tree/dev2025/setup.ps1" | iex
+irm "https://raw.githubusercontent.com/stevie86/powershell-profile/dev2025/setup.ps1" | iex
 ```
 
 ## 🛠️ Fix the Missing Font
