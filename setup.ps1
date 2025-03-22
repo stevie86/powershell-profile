@@ -93,12 +93,21 @@ if (!(Test-Path -Path $PROFILE -PathType Leaf)) {
 }
 else {
     try {
-        $developmentNoticePresent = Test-Path -Path $PROFILE -PathType Leaf -ErrorAction SilentlyContinue |  ForEach-Object { Get-Content -Path $PROFILE -ErrorAction SilentlyContinue } | Select-String -Pattern "# DEVELOPMENT NOTICE" -Quiet
-        Get-Item -Path $PROFILE | Move-Item -Destination "oldprofile.ps1" -Force
-        Invoke-RestMethod https://github.com/ChrisTitusTech/powershell-profile/raw/main/Microsoft.PowerShell_profile.ps1 -OutFile $PROFILE
-        if ($developmentNoticePresent) {
-            Add-Content -Path $PROFILE -Value "# DEVELOPMENT NOTICE`n# This file is currently in DEVELOPMENT mode.`n# //DEVELOPMENT NOTICE"
+        # Check if Git is installed
+        $gitInstalled = Test-Path -Path "C:\Program Files\Git\cmd\git.exe"
+
+        if ($gitInstalled) {
+            # Backup the profile to a Git-versioned path (skipped)
+            Write-Host "Git is installed, but Git-versioned backup is not implemented."
+        } else {
+            # Backup the profile by naming the backup with the date
+            $backupDate = Get-Date -Format "yyyyMMddHHmmss"
+            $backupPath = "oldprofile_$backupDate.ps1"
+            Get-Item -Path $PROFILE | Move-Item -Destination $backupPath -Force
+            Write-Host "Old profile backed up to $backupPath"
         }
+
+        Invoke-RestMethod https://github.com/ChrisTitusTech/powershell-profile/raw/main/Microsoft.PowerShell_profile.ps1 -OutFile $PROFILE
         Write-Host "The profile @ [$PROFILE] has been created and old profile removed."
         Write-Host "Please back up any persistent components of your old profile to [$HOME\Documents\PowerShell\Profile.ps1] as there is an updater in the installed profile which uses the hash to update the profile and will lead to loss of changes"
     }
