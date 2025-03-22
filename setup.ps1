@@ -1,4 +1,8 @@
 # Ensure the script can run with elevated privileges
+param (
+    [switch]$Backup
+)
+
 if (-NOT ([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole] "Administrator")) {
     Write-Warning "Please run this script as an Administrator!"
     break
@@ -93,18 +97,14 @@ if (!(Test-Path -Path $PROFILE -PathType Leaf)) {
 }
 else {
     try {
-        # Check if Git is installed
-        $gitInstalled = Test-Path -Path "C:\Program Files\Git\cmd\git.exe"
-
-        if ($gitInstalled) {
-            # Backup the profile to a Git-versioned path (skipped)
-            Write-Host "Git is installed, but Git-versioned backup is not implemented."
-        } else {
+        if ($Backup) {
             # Backup the profile by naming the backup with the date
             $backupDate = Get-Date -Format "yyyyMMddHHmmss"
             $backupPath = "oldprofile_$backupDate.ps1"
             Get-Item -Path $PROFILE | Move-Item -Destination $backupPath -Force
             Write-Host "Old profile backed up to $backupPath"
+        } else {
+            Write-Host "Skipping profile backup."
         }
 
         Invoke-RestMethod https://github.com/ChrisTitusTech/powershell-profile/raw/main/Microsoft.PowerShell_profile.ps1 -OutFile $PROFILE

@@ -12,6 +12,17 @@ Execute the following command in an elevated PowerShell window to install the Po
 irm "https://raw.githubusercontent.com/stevie86/powershell-profile/dev2025/setup.ps1" | iex
 ```
 
+The `setup.ps1` script accepts an optional `-Backup` switch. If this switch is present, the script will back up your existing PowerShell profile before installing the new profile. If the switch is not present, the script will not back up your existing profile.
+
+Example with backup:
+```
+irm "https://raw.githubusercontent.com/stevie86/powershell-profile/dev2025/setup.ps1" | iex -Backup
+```
+Example without backup:
+```
+irm "https://raw.githubusercontent.com/stevie86/powershell-profile/dev2025/setup.ps1" | iex
+```
+
 ## 🛠️ Fix the Missing Font
 
 After running the script, you'll have two options for installing a font patched to support icons in PowerShell:
