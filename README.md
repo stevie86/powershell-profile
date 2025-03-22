@@ -1,6 +1,6 @@
 # 🎨 PowerShell Profile (Pretty PowerShell)
 
-Version 1.04 - `setprofile.ps1` aktualisiert, um das PowerShell-Profil direkt von GitHub herunterzuladen.
+Version 1.04 - `setprofile.ps1` updated to download the PowerShell profile directly from GitHub.
 
 A stylish and functional PowerShell profile that looks and feels almost as good as a Linux terminal.
 
@@ -9,7 +9,7 @@ A stylish and functional PowerShell profile that looks and feels almost as good 
 Execute the following command in an elevated PowerShell window to install the PowerShell profile:
 
 ```
-irm "https://github.com/stevie86/powershell-profile/tree/main/setup.ps1" | iex
+irm "https://github.com/stevie86/powershell-profile/tree/dev2025/setup.ps1" | iex
 ```
 
 ## 🛠️ Fix the Missing Font
@@ -49,13 +49,13 @@ PS> oh-my-posh font install
 
 After the profile is installed and active, run the `Edit-Profile` function to create a separate profile file for your current user. Make any changes and customizations in this new file named `profile.ps1`.
 
-## Testen des Dev-Branch lokal
+## Testing the Dev Branch Locally
 
-Um Ihren Dev-Branch lokal zu testen, führen Sie die folgenden Schritte aus:
+To test your Dev Branch locally, follow these steps:
 
-1.  Kopieren Sie die Datei `Microsoft.PowerShell_profile.ps1` in Ihr PowerShell-Profilverzeichnis. Das PowerShell-Profilverzeichnis befindet sich normalerweise unter `$HOME\Documents\PowerShell`.
-2.  Starten Sie PowerShell neu.
+1.  Copy the `Microsoft.PowerShell_profile.ps1` file to your PowerShell profile directory. The PowerShell profile directory is usually located at `$HOME\Documents\PowerShell`.
+2.  Restart PowerShell.
 
-Die Änderungen sollten nun in PowerShell wirksam sein.
+The changes should now be effective in PowerShell.
 
 Now, enjoy your enhanced and stylish PowerShell experience! 🚀
