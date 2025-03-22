@@ -1,5 +1,7 @@
 # 🎨 PowerShell Profile (Pretty PowerShell)
 
+Version 1.04 - `setprofile.ps1` aktualisiert, um das PowerShell-Profil direkt von GitHub herunterzuladen.
+
 A stylish and functional PowerShell profile that looks and feels almost as good as a Linux terminal.
 
 ## ⚡ One Line Install (Elevated PowerShell Recommended)
